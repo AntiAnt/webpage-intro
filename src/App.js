@@ -5,9 +5,11 @@ class Homepage extends Component {
   constructor(props) {
     super(props);
   }
+
+
   homepage(props) {
     if (props === true) {
-      return <img src='https://i.pinimg.com/originals/87/5d/79/875d7931fb3be8a201e271584ca83339.jpg' rel='Finn as a Barbarian' />
+      return <img id='Intro' src='https://i.pinimg.com/originals/87/5d/79/875d7931fb3be8a201e271584ca83339.jpg' rel='Finn as a Barbarian' />
     }else {
       return(
         <React.Fragment>
@@ -30,10 +32,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      intro: true
+      intro: true,
+      menuDrop:false
     }
 
   }
+
+  
  
   componentDidMount() {
     setTimeout(
