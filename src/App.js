@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Homepage extends Component {
+  constructor(props) {
+    super(props);
+  }
+  homepage(props) {
+    if (props === true) {
+      return <img src='https://i.pinimg.com/originals/87/5d/79/875d7931fb3be8a201e271584ca83339.jpg' rel='Finn as a Barbarian' />
+    }else {
+      return(
+        <React.Fragment>
+          <h1>Michael I Welsh</h1>
+          <h4>Path to learning Software Devlopment</h4>
+        </React.Fragment>
+      )
+    }
+  }
+  render() {
+    return (
+      <div>
+      {this.homepage(this.props.intro)}
+      </div>
+    )
+  }
+}
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      intro: true
+    }
+
+  }
+ 
+  componentDidMount() {
+    setTimeout(
+      function() {
+        this.setState({intro:false})
+      }.bind(this),
+      2000
+    )
+  }
+
+  render() {
+    return(
+      <div className='App'>
+        <Homepage intro={this.state.intro} />
+      </div>
+    )
+  }
 }
 
 export default App;
