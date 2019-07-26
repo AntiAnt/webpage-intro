@@ -6,6 +6,21 @@ class Homepage extends Component {
     super(props);
   }
 
+  menu(prop) {
+    if (prop === true) {
+      return(
+        <div>
+          <ul id='Menu'>
+            <li>Home</li>
+            <li>Story</li>
+            <li>Projects</li>
+            <li>Github</li>
+            <li>Work History</li>
+          </ul>
+        </div>
+      )
+    }
+  }
 
   homepage(props) {
     if (props === true) {
@@ -15,6 +30,8 @@ class Homepage extends Component {
         <React.Fragment>
           <h1>Michael I Welsh</h1>
           <h4>Path to learning Software Devlopment</h4>
+          <button onClick={this.props.menuClick}>Menu</button>
+          {this.menu(this.props.menu)}
         </React.Fragment>
       )
     }
@@ -38,7 +55,11 @@ class App extends Component {
 
   }
 
-  
+  menuClick() {
+    this.setState(prev => ({
+      menuDrop: !prev.menuDrop
+    }))
+  }
  
   componentDidMount() {
     setTimeout(
@@ -52,7 +73,7 @@ class App extends Component {
   render() {
     return(
       <div className='App'>
-        <Homepage intro={this.state.intro} />
+        <Homepage intro={this.state.intro} menuClick={this.menuClick.bind(this)} menu={this.state.menuDrop} />
       </div>
     )
   }
